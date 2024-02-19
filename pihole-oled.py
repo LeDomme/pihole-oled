@@ -26,10 +26,16 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
+#API
+##Set you API key here
+api_token = "YOUR_API_KEY"
+api_url = "http://localhost/admin/api.php?summaryRaw&auth="+api_token
+
+
 #oled display setup
-serial = i2c(port=0, address=0x3C)
+serial = i2c(port=1, address=0x3C)
 device = ssd1306(serial, rotate=0)
-font = ImageFont.truetype('/opt/pihole-oled/SF_Pixelate.ttf', 10)
+font = ImageFont.truetype('SF_Pixelate.ttf', 10)
 width = device.width
 height = device.height
 
@@ -134,7 +140,7 @@ try:
                 )
             else:
                 try:
-                    req = requests.get('http://127.0.0.1/admin/api.php')
+                    req = requests.get(api_url)
                     data = req.json()
                     draw.text(
                         (0, 0),

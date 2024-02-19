@@ -4,13 +4,13 @@ Requires=network.target
 
 [Service]
 Type=simple
-User=pihole
+User=pi
 
 ; Uncomment the lines below to change the config
 ;Environment=PIHOLE_OLED_INTERFACE=eth0
 ;Environment=PIHOLE_OLED_MOUNT_POINT=/
 
-WorkingDirectory=/opt/pihole-oled
+WorkingDirectory=/home/pi/pihole-oled
 ExecStart=/usr/bin/python3 pihole-oled.py
 ExecStop=/usr/bin/python3 sleep-oled.py
 
